@@ -1,0 +1,138 @@
+/* ===== 3D Globe Preview (minimized map state) ===== */
+
+.globe-preview {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.globe-preview:hover {
+  transform: scale(1.1);
+}
+
+.globe-preview:active {
+  transform: scale(0.95);
+}
+
+/* The 3D sphere – earth texture + radial shading */
+.globe-preview__sphere {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 24px rgba(74, 237, 196, 0.25),
+    0 0 60px rgba(74, 237, 196, 0.08),
+    inset -8px -4px 16px rgba(0, 0, 0, 0.6);
+  border: 1.5px solid rgba(74, 237, 196, 0.2);
+}
+
+/* Earth texture – scrolling background to simulate rotation */
+.globe-preview__texture {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: url('/assets/earth-dark.png');
+  background-size: 200% 100%;
+  background-repeat: repeat-x;
+  background-position: 0% center;
+  animation: globeSpin 12s linear infinite;
+}
+
+/* 3D shading overlay – makes it look spherical */
+.globe-preview__shading {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%,
+      rgba(74, 237, 196, 0.08) 0%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.45) 75%,
+      rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* Specular highlight */
+.globe-preview__highlight {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  width: 18px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 70%);
+  pointer-events: none;
+  transform: rotate(-20deg);
+}
+
+/* Atmosphere halo glow */
+.globe-preview::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(74, 237, 196, 0.12) 50%,
+      rgba(74, 237, 196, 0.04) 70%,
+      transparent 100%);
+  pointer-events: none;
+  animation: atmospherePulse 4s ease-in-out infinite;
+}
+
+/* Expand badge */
+.globe-preview__expand {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(74, 237, 196, 0.5);
+  z-index: 2;
+  transition: transform var(--transition-fast);
+}
+
+.globe-preview:hover .globe-preview__expand {
+  transform: scale(1.15);
+}
+
+.globe-preview__expand svg {
+  width: 12px;
+  height: 12px;
+  color: var(--bg-primary);
+}
+
+/* Rotation animation */
+@keyframes globeSpin {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* Atmosphere breathing */
+@keyframes atmospherePulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
