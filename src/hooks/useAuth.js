@@ -46,6 +46,7 @@ export default function useAuth() {
       displayName: username.trim(),
       createdAt: Date.now(),
       stats: { totalDistance: 0, totalTime: 0, totalWalks: 0 },
+      color: '#4aedc4',
     }
     users[trimmed] = { ...newUser, password }
     saveUsers(users)
@@ -89,5 +90,18 @@ export default function useAuth() {
     }
   }, [user])
 
-  return { user, isAuthenticated, login, register, logout, updateStats }
+  const updateColor = useCallback((newColor) => {
+    if (!user) return
+    const users = getUsers()
+    const trimmed = user.username
+    if (users[trimmed]) {
+      users[trimmed].color = newColor
+      saveUsers(users)
+      const { password: _, ...userData } = users[trimmed]
+      saveSession(userData)
+      setUser(userData)
+    }
+  }, [user])
+
+  return { user, isAuthenticated, login, register, logout, updateStats, updateColor }
 }
