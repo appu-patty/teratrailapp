@@ -27,7 +27,7 @@
 .landing__orb--1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #4aedc4 0%, transparent 70%);
+  background: radial-gradient(circle, #ffb088 0%, transparent 70%);
   top: -10%;
   right: -5%;
   animation: float 8s ease-in-out infinite;
@@ -112,7 +112,7 @@
 }
 
 .landing__title-accent {
-  background: linear-gradient(135deg, #4aedc4, #36cfb0, #2dd4a8);
+  background: linear-gradient(135deg, #ffb088, #ff9a76, #ff8c69);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -143,20 +143,20 @@
   gap: var(--space-sm);
   margin-top: var(--space-lg);
   padding: var(--space-md) var(--space-2xl);
-  background: linear-gradient(135deg, #4aedc4 0%, #36cfb0 100%);
-  color: #0a0e1a;
+  background: linear-gradient(135deg, #ffb088 0%, #ff9a76 100%);
+  color: #000000;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 24px rgba(74, 237, 196, 0.35);
+  box-shadow: 0 4px 24px rgba(255, 176, 136, 0.35);
   transition: all var(--transition-base);
   height: 56px;
 }
 
 .landing__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(74, 237, 196, 0.5);
+  box-shadow: 0 8px 40px rgba(255, 176, 136, 0.5);
 }
 
 .landing__cta:active {

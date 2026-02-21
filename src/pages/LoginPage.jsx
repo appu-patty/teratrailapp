@@ -17,7 +17,23 @@ export default function LoginPage() {
     }
   }, [isAuthenticated, navigate])
 
-  if (isAuthenticated) return null
+  if (isAuthenticated) return (
+    <div className="login">
+      <div className="login__bg">
+        <div className="login__orb login__orb--1" />
+        <div className="login__orb login__orb--2" />
+        <div className="login__grid" />
+      </div>
+      <div className="login__content">
+        <div className="login__brand animate-fade-in">
+          <h1 className="login__logo">
+            <span className="login__logo-accent">Terra</span>Trail
+          </h1>
+          <p className="login__tagline">Redirecting…</p>
+        </div>
+      </div>
+    </div>
+  )
 
   const handleSubmit = (e) => {
     e.preventDefault()

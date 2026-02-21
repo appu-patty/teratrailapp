@@ -52,7 +52,7 @@
 
 .leaderboard__row--me {
   background: var(--accent-dim);
-  border: 1px solid rgba(74, 237, 196, 0.15);
+  border: 1px solid rgba(255, 176, 136, 0.15);
 }
 
 .leaderboard__rank {
