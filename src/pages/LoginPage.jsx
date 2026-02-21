@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 import './LoginPage.css'
@@ -11,10 +11,13 @@ export default function LoginPage() {
   const { login, register, isAuthenticated } = useAuthContext()
   const navigate = useNavigate()
 
-  if (isAuthenticated) {
-    navigate('/play', { replace: true })
-    return null
-  }
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/play', { replace: true })
+    }
+  }, [isAuthenticated, navigate])
+
+  if (isAuthenticated) return null
 
   const handleSubmit = (e) => {
     e.preventDefault()
