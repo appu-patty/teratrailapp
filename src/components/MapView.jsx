@@ -7,7 +7,7 @@ import './MapView.css'
 const DARK_TILES = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
 const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
 
-export default function MapView({ path = [], center, isTracking, themeColor = '#4aedc4', className = '' }) {
+export default function MapView({ path = [], center, isTracking, className = '' }) {
   const containerRef = useRef(null)
   const mapRef = useRef(null)
   const polylineRef = useRef(null)
@@ -36,7 +36,7 @@ export default function MapView({ path = [], center, isTracking, themeColor = '#
 
     // Glow polyline (wider, transparent)
     glowPolylineRef.current = L.polyline([], {
-      color: themeColor,
+      color: '#4aedc4',
       weight: 12,
       opacity: 0.2,
       smoothFactor: 1,
@@ -46,7 +46,7 @@ export default function MapView({ path = [], center, isTracking, themeColor = '#
 
     // Main path polyline
     polylineRef.current = L.polyline([], {
-      color: themeColor,
+      color: '#4aedc4',
       weight: 4,
       opacity: 0.9,
       smoothFactor: 1,
@@ -75,13 +75,6 @@ export default function MapView({ path = [], center, isTracking, themeColor = '#
     glowPolylineRef.current.setLatLngs(latLngs)
   }, [path])
 
-  // Update polyline colors when themeColor changes
-  useEffect(() => {
-    if (!polylineRef.current || !glowPolylineRef.current) return
-    polylineRef.current.setStyle({ color: themeColor })
-    glowPolylineRef.current.setStyle({ color: themeColor })
-  }, [themeColor])
-
   // Update center + marker
   useEffect(() => {
     const map = mapRef.current
@@ -94,31 +87,15 @@ export default function MapView({ path = [], center, isTracking, themeColor = '#
     if (!markerRef.current) {
       const icon = L.divIcon({
         className: 'user-marker-wrapper',
-        html: `
-          <div class="user-marker" style="background: ${themeColor}; box-shadow: 0 0 12px ${themeColor}66, 0 0 24px ${themeColor}33">
-            <div class="user-marker__ring" style="background: ${themeColor}26"></div>
-          </div>
-        `,
+        html: '<div class="user-marker"><div class="user-marker__ring"></div></div>',
         iconSize: [24, 24],
         iconAnchor: [12, 12],
       })
       markerRef.current = L.marker([center.lat, center.lng], { icon }).addTo(map)
     } else {
-      // Re-create icon if themeColor changes
-      const icon = L.divIcon({
-        className: 'user-marker-wrapper',
-        html: `
-          <div class="user-marker" style="background: ${themeColor}; box-shadow: 0 0 12px ${themeColor}66, 0 0 24px ${themeColor}33">
-            <div class="user-marker__ring" style="background: ${themeColor}26"></div>
-          </div>
-        `,
-        iconSize: [24, 24],
-        iconAnchor: [12, 12],
-      })
-      markerRef.current.setIcon(icon)
       markerRef.current.setLatLng([center.lat, center.lng])
     }
-  }, [center, isTracking, themeColor])
+  }, [center, isTracking])
 
   // Resize handler
   useEffect(() => {
