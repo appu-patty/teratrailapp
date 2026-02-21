@@ -47,6 +47,7 @@ export default function TrackingPage() {
           path={path}
           center={center}
           isTracking={status === 'tracking'}
+          themeColor={user?.color}
         />
       </div>
 

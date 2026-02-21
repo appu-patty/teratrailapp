@@ -41,7 +41,12 @@ export default function PlayPage() {
     <div className="play">
       {/* Full-screen map */}
       <div className="play__map">
-        <MapView center={userLocation} path={[]} isTracking={false} />
+        <MapView
+          center={userLocation}
+          path={[]}
+          isTracking={false}
+          themeColor={user?.color}
+        />
       </div>
 
       {/* Top controls */}

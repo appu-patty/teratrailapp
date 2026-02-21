@@ -97,6 +97,43 @@
   letter-spacing: 0.06em;
 }
 
+.profile__colors {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.profile__color-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.profile__color-btn:hover {
+  border-color: var(--btn-color);
+  background: var(--bg-card);
+}
+
+.profile__color-btn.is-active {
+  border-color: var(--btn-color);
+  background: var(--bg-card);
+  box-shadow: 0 0 15px var(--btn-color);
+}
+
+.profile__color-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 .profile__actions {
   display: flex;
   flex-direction: column;
