@@ -12,7 +12,7 @@ function formatDistance(meters) {
   return (meters / 1000).toFixed(2)
 }
 
-export default function SessionSummary({ distance, elapsed, onNewWalk }) {
+export default function SessionSummary({ distance, elapsed, newTiles = 0, totalTerritories = 0, onNewWalk }) {
   return (
     <div className="session-summary">
       <div className="session-summary__backdrop" />
@@ -34,6 +34,19 @@ export default function SessionSummary({ distance, elapsed, onNewWalk }) {
             <span className="session-summary__stat-label">duration</span>
           </div>
         </div>
+
+        {/* Territory capture results */}
+        {newTiles > 0 && (
+          <div className="session-summary__territory">
+            <div className="session-summary__territory-badge">
+              <span className="session-summary__territory-icon">🗺️</span>
+              <div className="session-summary__territory-info">
+                <span className="session-summary__territory-new">+{newTiles} new tiles captured!</span>
+                <span className="session-summary__territory-total">{totalTerritories} total territories</span>
+              </div>
+            </div>
+          </div>
+        )}
 
         <ActionButton variant="newWalk" onClick={onNewWalk} />
       </div>

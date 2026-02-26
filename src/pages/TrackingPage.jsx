@@ -20,6 +20,10 @@ export default function TrackingPage() {
     start,
     stop,
     reset,
+    territories,
+    sessionTiles,
+    newTilesCaptured,
+    totalTerritories,
   } = useTracker()
 
   const center = useMemo(() => {
@@ -47,8 +51,18 @@ export default function TrackingPage() {
           path={path}
           center={center}
           isTracking={status === 'tracking'}
+          territories={territories}
+          sessionTiles={sessionTiles}
         />
       </div>
+
+      {/* Territory counter badge */}
+      {status === 'tracking' && newTilesCaptured > 0 && (
+        <div className="tracking__territory-badge animate-fade-in">
+          <span className="tracking__territory-icon">🗺️</span>
+          <span className="tracking__territory-count">+{newTilesCaptured} tiles</span>
+        </div>
+      )}
 
       {/* Top bar - branding */}
       <header className="tracking__header">
@@ -111,6 +125,8 @@ export default function TrackingPage() {
         <SessionSummary
           distance={distance}
           elapsed={elapsed}
+          newTiles={newTilesCaptured}
+          totalTerritories={totalTerritories}
           onNewWalk={handleNewWalk}
         />
       )}

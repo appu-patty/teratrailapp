@@ -40,17 +40,17 @@
 
 /* Start / New Walk variant */
 .action-btn--start {
-  background: linear-gradient(135deg, #4aedc4 0%, #36cfb0 100%);
-  color: #0a0e1a;
-  box-shadow: 0 4px 24px rgba(74, 237, 196, 0.3);
+  background: linear-gradient(135deg, #ffb088 0%, #ff9a76 100%);
+  color: #000000;
+  box-shadow: 0 4px 24px rgba(255, 176, 136, 0.3);
 }
 
 .action-btn--start::before {
-  background: linear-gradient(135deg, #5bf5d0 0%, #4aedc4 100%);
+  background: linear-gradient(135deg, #ffd1b3 0%, #ffb088 100%);
 }
 
 .action-btn--start:hover {
-  box-shadow: 0 6px 32px rgba(74, 237, 196, 0.45);
+  box-shadow: 0 6px 32px rgba(255, 176, 136, 0.45);
   transform: translateY(-1px);
 }
 

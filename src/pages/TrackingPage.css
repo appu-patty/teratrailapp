@@ -1,7 +1,7 @@
 .tracking {
   position: relative;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   overflow: hidden;
   background: var(--bg-primary);
 }
@@ -35,7 +35,7 @@
 }
 
 .tracking__logo-accent {
-  background: linear-gradient(135deg, #4aedc4, #36cfb0);
+  background: linear-gradient(135deg, #ffb088, #ff9a76);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -75,7 +75,7 @@
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-xl) var(--space-lg);
-  padding-bottom: max(var(--space-xl), env(safe-area-inset-bottom, 20px));
+  padding-bottom: var(--space-lg);
   background: linear-gradient(to top, rgba(10, 14, 26, 0.85) 30%, transparent);
 }
 
@@ -116,4 +116,33 @@
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* ===== Territory Badge ===== */
+.tracking__territory-badge {
+  position: absolute;
+  top: 60px;
+  left: var(--space-md);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 176, 136, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 176, 136, 0.25);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  box-shadow: 0 4px 16px rgba(255, 176, 136, 0.15);
+}
+
+.tracking__territory-icon {
+  font-size: 0.85rem;
+}
+
+.tracking__territory-count {
+  font-family: var(--font-mono);
 }

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import useGeolocation from './useGeolocation'
+import useTerritory from './useTerritory'
 
 // Haversine distance in meters
 function haversine(lat1, lon1, lat2, lon2) {
@@ -16,6 +17,7 @@ function haversine(lat1, lon1, lat2, lon2) {
 export default function useTracker() {
   const { position, error, permissionState, startWatching, stopWatching } =
     useGeolocation()
+  const territory = useTerritory()
 
   // Session state: 'idle' | 'tracking' | 'summary'
   const [status, setStatus] = useState('idle')
@@ -41,7 +43,10 @@ export default function useTracker() {
     }
 
     lastPosRef.current = { lat, lng }
-    setPath((prev) => [...prev, [lng, lat]]) // Mapbox uses [lng, lat]
+    setPath((prev) => [...prev, [lng, lat]]) // Leaflet uses [lng, lat] in path
+
+    // Capture territory tile at this position
+    territory.captureTile(lat, lng)
   }, [position, status])
 
   // Timer
@@ -66,9 +71,10 @@ export default function useTracker() {
     setDistance(0)
     setElapsed(0)
     lastPosRef.current = null
+    territory.resetSession()
     startWatching()
     setStatus('tracking')
-  }, [startWatching])
+  }, [startWatching, territory])
 
   const stop = useCallback(() => {
     stopWatching()
@@ -94,5 +100,10 @@ export default function useTracker() {
     start,
     stop,
     reset,
+    // Territory data
+    territories: territory.territories,
+    sessionTiles: territory.sessionTiles,
+    totalTerritories: territory.totalCount,
+    newTilesCaptured: territory.sessionCount,
   }
 }

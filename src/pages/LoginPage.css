@@ -24,7 +24,7 @@
 .login__orb--1 {
   width: 350px;
   height: 350px;
-  background: radial-gradient(circle, #4aedc4, transparent 70%);
+  background: radial-gradient(circle, #ffb088, transparent 70%);
   top: -5%;
   left: -10%;
   animation: float 8s ease-in-out infinite;
@@ -71,7 +71,7 @@
 }
 
 .login__logo-accent {
-  background: linear-gradient(135deg, #4aedc4, #36cfb0);
+  background: linear-gradient(135deg, #ffb088, #ff9a76);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -157,19 +157,19 @@
 .login__submit {
   margin-top: var(--space-sm);
   padding: 14px;
-  background: linear-gradient(135deg, #4aedc4, #36cfb0);
-  color: #0a0e1a;
+  background: linear-gradient(135deg, #ffb088, #ff9a76);
+  color: #000000;
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
-  box-shadow: 0 4px 20px rgba(74, 237, 196, 0.25);
+  box-shadow: 0 4px 20px rgba(255, 176, 136, 0.25);
 }
 
 .login__submit:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 28px rgba(74, 237, 196, 0.4);
+  box-shadow: 0 6px 28px rgba(255, 176, 136, 0.4);
 }
 
 .login__submit:active {

@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xl);
-  box-shadow: var(--shadow-card), 0 0 60px rgba(74, 237, 196, 0.08);
+  box-shadow: var(--shadow-card), 0 0 60px rgba(255, 176, 136, 0.08);
   animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.1s;
 }
@@ -106,4 +106,43 @@
   width: 1px;
   height: 40px;
   background: var(--border);
+}
+
+/* Territory capture results */
+.session-summary__territory {
+  width: 100%;
+}
+
+.session-summary__territory-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: rgba(255, 176, 136, 0.08);
+  border: 1px solid rgba(255, 176, 136, 0.15);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.5s ease both;
+  animation-delay: 0.4s;
+}
+
+.session-summary__territory-icon {
+  font-size: 1.5rem;
+}
+
+.session-summary__territory-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.session-summary__territory-new {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.session-summary__territory-total {
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
